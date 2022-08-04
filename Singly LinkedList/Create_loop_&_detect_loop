@@ -1,0 +1,120 @@
+import java.util.*;
+
+
+class loop
+{
+    static class node
+    {
+        int data;
+        node next;
+        public node(int data)
+        {
+            this.data=data;
+            next=null;
+        }
+    }
+
+    static node root;
+
+    public void add(int data)
+    {
+        node newnode = new node(data);
+
+        if(root==null)
+        {
+            root=newnode;
+            return;
+        }
+
+        node curr =root;
+        while(curr.next!=null)
+        {
+            curr =curr.next;
+        }
+        curr.next=newnode;
+
+    }
+
+    public void print()
+    {
+        if(root==null)
+        System.out.println("Empty list");
+
+        node curr =root;
+        while(curr!=null)
+        {
+            System.out.print(curr.data+"--> ");
+            curr = curr.next;
+        }
+        System.out.println("null");
+    }
+
+
+    public void createloop(int pos)
+    {
+        
+
+        node curr =root;
+         node store =null;
+        int count=1;
+
+         while(count<pos)
+         {
+             count++;
+             curr=curr.next;
+             store =curr;
+         }
+
+         while(curr.next!=null)
+         {
+             curr =curr.next;
+         }
+         curr.next=store;
+
+     
+    }
+    public node dectedloop()
+    {
+        node slow =root;
+        node fast =root;
+        while(fast!=null && fast.next!=null)
+        {
+            fast =fast.next.next;
+            slow =slow.next;
+            if(fast==slow)
+            return slow;
+        }
+
+           return null;
+    }
+
+    public void where()
+    {
+        node loc = dectedloop();
+        node curr =root;
+        while(loc!=curr)
+        {
+            loc =loc.next;
+            curr =curr.next;
+        }
+        System.out.println(curr.data);
+        loc.next=null;
+    }
+}
+
+public class loop_linkedlist
+{
+    public static void main(String args[])
+    {
+        loop list = new loop();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        list.add(50);
+        list.add(60);
+        list.print();
+        list.createloop(2);
+        list.where();
+    }
+}
