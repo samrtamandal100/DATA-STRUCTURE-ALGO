@@ -1,0 +1,102 @@
+import java.util.*;
+import java.io.*;
+
+class queue_impelementation
+{      static int max;
+    public queue_impelementation(int max)
+    {
+        this.max=max;
+    }
+    static int queue[] = new int[max];
+    static int fornt=-1,rear=-1;
+     static Scanner sc = new Scanner(System.in);
+
+    public  void enqueue()
+    {
+          if(rear == max-1)
+          {
+              System.out.println("Queue is OverFlow");
+          }
+          else
+          {
+              if(fornt== -1)
+              {
+                  fornt=0;
+              }
+              System.out.print("Enter a element :"+" ");
+              int n =sc.nextInt();
+              rear++;
+              queue[rear]=n;
+
+          }
+         
+    }
+    public  void dequeue()
+    {
+         if(fornt == -1 || fornt > rear)
+         {
+            System.out.print("Queue is UnderFlow");
+         }
+         else
+         {
+             System.out.print("Dequeue "+ queue[fornt]);
+             fornt++;
+         }
+    }
+
+    public  void disp()
+    {
+        if(rear== -1)
+        {
+            System.out.print("queue is empty");
+        }
+        else{
+
+            for(int i=fornt;i<=rear;i++)
+            {
+                System.out.print(queue[i]);
+            }
+        }
+    }
+}
+
+public class queue
+{
+    public static void main(String args[])
+    {
+
+        queue_impelementation q = new queue_impelementation(20);
+       Scanner sc = new Scanner(System.in);
+           while(true)
+           {
+             
+             System.out.println("Press (1)EnQueue ");
+             System.out.println("Press (2)DeQueue ");
+             System.out.println("Press (3)Display ");
+             System.out.println("Press (4)Exit ");
+             System.out.println(" Enter choices......");
+             int n = sc.nextInt();
+
+             switch(n)
+             {
+                 case 1:
+                       q.enqueue();
+                       break;
+                case 2:
+                       q.dequeue();
+                       break;
+                case 3:
+                       q.disp();
+                       break;
+                case 4:
+                       System.exit(0);
+                       break;
+                default:
+                       System.out.print(" invalid your input");                     
+
+                         
+             }
+           }
+
+    }
+}
