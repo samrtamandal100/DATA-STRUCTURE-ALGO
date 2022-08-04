@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class binary_search_tree
+{
+	class node 
+	{
+		int data;
+		node right,left;
+		public node(int data)
+		{
+			this.data=data;
+			right=left=null;
+		}
+	}
+
+	static node root=null;
+
+
+	public void insert(int data)
+	{
+      root= insert(root,data);
+	}
+	public node insert(node root ,int data)
+	{
+		if(root==null)
+		{
+			root =new node(data);
+			return root;
+		}
+
+		if(root.data>data)
+			root.left =insert(root.left,data);
+		else
+			root.right=insert(root.right,data);
+
+
+		return root;
+	}
+   public static void main(String args[])
+	      {
+	      	 binary_search_tree tree = new binary_search_tree();
+	      	 tree.insert(10);
+	      	 tree.insert(20);
+	      	 tree.insert(30);
+	      	 tree.insert(40);
+	      	 tree.insert(50);
+     }
+  }
