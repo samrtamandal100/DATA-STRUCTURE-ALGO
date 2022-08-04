@@ -1,0 +1,25 @@
+public boolean Check_tree(node root)
+{
+     List<Integer> list = new ArrayList<>();
+     if_check(root,list);
+     for(int i=1;i<list.size();i++)
+     {
+       if(list.get(i)<=list.get(i-1))
+         return false;
+      }
+      return true;
+}
+
+public void if_check(Node root ,List<Integer> list)
+{
+     if(root.left!=null)
+     {
+           if_check(root.left,list);
+     }
+     list.add(root.val);
+     if(root.right!=null)
+     {
+         if_check(root.right ,list);
+      }
+     
+}
