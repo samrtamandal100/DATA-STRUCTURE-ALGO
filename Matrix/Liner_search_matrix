@@ -1,0 +1,59 @@
+import java.util.*;
+import java.io.*;
+
+public class liner_serach_matrix
+{
+
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter Row");
+		int r =sc.nextInt();
+		System.out.print("Enter colum");
+		int c =sc.nextInt();
+
+		int arr[][] = new int[r][c];
+
+		for(int i=0; i<r;i++)
+		{
+			for(int j =0;j<c;j++)
+			{
+				System.out.print("["+i+"]"+"["+j+"]");
+				arr[i][j]=sc.nextInt();
+			}
+		}
+		System.out.print("Enter Serching number");
+		int num =sc.nextInt();
+
+		liner.liner_serch(arr,r,c,num);
+
+
+	}
+}
+
+class liner
+{
+	public static void liner_serch(int arr[][],int r,int c,int num)
+   {
+
+   	int count =0;
+      for(int i=0; i<r;i++)
+		{
+			for(int j =0;j<c;j++)
+			{
+				if(arr[i][j]==num)
+				{
+					System.out.print("index "+"["+i+"]"+"["+j+"]");
+					count++;
+					break;
+				}
+			}
+		}
+
+		if(count==0)
+		{
+			System.out.print("this number not found");
+		}
+
+}
+}
