@@ -1,0 +1,156 @@
+import java.io.*;
+import java.util.*;
+
+class implement
+{       
+	   
+	   node head;
+    public class node
+     { 
+           String data;
+           node next;
+
+     	node(String data)
+     	{
+            this.data=data;
+            this.next =null;
+     	}
+     } 
+
+
+	  public void addfirst(String data)
+	  {
+              node newnode = new node(data);
+              if(head== null)
+              {
+              	  head = newnode;
+              	  return;
+              }
+             newnode.next =head;
+              head = newnode;
+	  }
+            
+
+      public void addlast(String data)
+      {
+         node newnode = new node(data);
+              if(head== null)
+              {
+              	  head = newnode;
+              	  return;
+              }
+
+
+              node curre = head;
+              while(curre.next!=null)
+              {
+              	curre =curre.next;
+              }
+
+
+              curre.next =newnode;
+
+      }
+
+      public void print()
+       
+       {
+      	    if(head==null)
+      	    {
+      	    	System.out.print("this list is empty");
+      	    	return;
+      	    }
+
+      	    node printnode = head;
+      	    while(printnode!=null)
+      	    {
+      	    	System.out.print(printnode.data+"-->");
+      	    	printnode = printnode.next;
+      	    }
+      	    System.out.print("null");
+
+      }
+
+      public void remove()
+      {
+
+      	  if(head== null)
+      	  {
+      	  	System.out.print("List is empty");
+      	  	return;
+      	  }
+
+      	  head = head.next;
+      }
+
+      public void removeLast()
+      {
+           if(head== null )
+      	  {
+      	  	System.out.print("List is empty");
+      	  	return;
+      	  }
+
+      	  if(head.next==null)
+      	  {
+      	  	head =null;
+      	  	return;
+      	  }
+
+
+      	  node secondlast = head;
+      	  node lastnode =head.next;
+
+      	  while(lastnode.next!=null)
+      	  {
+      	  	lastnode = lastnode.next;
+      	  	secondlast =secondlast.next;
+      	  }
+
+      	  secondlast.next =null;  
+
+
+      }
+
+}
+
+
+public class linked_list_implement
+{
+	public static void main(String args[])
+	{
+       implement list = new implement();
+       list.addfirst("buddy");
+       list.addfirst("hellow");
+       list.addfirst("hellow");
+       list.addlast("world");
+       list.addlast("to");
+       list.addlast("day");
+       list.addlast("i am");
+       list.addlast("talking");
+       // list.remove();
+       // list.removeLast();
+
+
+
+       list.print();
+       list.remove();
+      list.removeLast();
+      System.out.println();
+      list.print();
+
+
+       System.out.println();
+
+
+
+       // LinkedList<String> sc = new  LinkedList<String>();
+
+       // sc.add("hellow");
+       // sc.add("hellow");
+       // sc.add("hellow");
+       // sc.add("hellow");
+
+       // System.out.print(sc);
+	}
+}
