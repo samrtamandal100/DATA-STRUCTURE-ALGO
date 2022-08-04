@@ -1,0 +1,66 @@
+import java.util.*;
+import java.io.*;
+
+
+class node<T>
+	{
+		T data;
+		node next;
+
+		public node(T data)
+		{
+			this.data=data;
+			this.next=null;
+		}
+	}
+
+public class generic_Linkedlist<T>
+{
+
+	
+	node<T> head=null;
+
+	public void add(T data)
+	{
+		node<T> newnode = new node<>(data);
+		if(head==null)
+		{
+			head=newnode;
+			return;
+		}
+
+		node<T> curr =head;
+		while(curr.next!=null)
+		{
+			curr=curr.next;
+		}
+		curr.next=newnode;
+
+
+	}
+	public void print()
+   {
+   	 if(head==null)
+   	 {
+   	 	System.out.print("head empty");
+   	 	return;
+   	 }
+
+   	   node<T> curr = head;
+   	   while(curr!=null)
+   	   {
+   	   	  System.out.print(curr.data+"-->");
+   	   	  curr= curr.next;
+   	   }
+   	   System.out.print("null");
+   }
+
+   public static void Main(String args[])
+   {
+   	    generic_Linkedlist<Integer> gen = new generic_Linkedlist<>();
+   	    gen.add(10);
+   	    gen.add(30);
+   	    gen.add(12);
+   	    gen.print();
+   }
+}
