@@ -1,0 +1,72 @@
+
+public class merge_sort
+{
+	public static void divide(int arr[],int st ,int ed)
+	{
+           if(st> ed)
+           {
+                return;
+           }
+
+           int mid = (st+ed)/2;
+           divide(arr,st,mid);
+           divide(arr,mid+1,ed);
+
+           concat(arr ,st ,mid,ed);
+	}
+
+
+	public static void concat(int arr[],int st ,int mid, int ed)
+	{
+           int merge[] = new int[arr.length];
+           int idx1 =st;
+           int idx2 =mid+1;
+           int x=0;
+
+           while(idx1 <= mid && idx2<=ed)
+           {
+               if(arr[idx1]<=arr[idx2])
+               {
+               	 merge[x++]= arr[idx1++];
+               }
+               else
+               {
+               	  merge[x++]=arr[idx2++];
+               }
+           } 
+
+           while(idx1<=mid)
+           {
+           	merge[x++]=arr[idx1++];
+           } 
+
+           while(idx2<=ed)
+           {
+           	merge[x++]=arr[idx2++];
+           } 
+
+
+           for(int i=0,j=st;i<merge.length;i++,j++)
+           {
+           	   arr[j]=merge[i];
+           } 
+
+
+           
+	}
+
+
+
+	public static void main(String args[])
+	{
+		int arr[] ={21,11,33,42,23,77,32,66};
+		int start =0,end =arr.length-1;
+		divide(arr,start,end);
+
+        for(int i=start;i<end;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+
+	}
+}
