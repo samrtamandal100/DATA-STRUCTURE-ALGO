@@ -1,0 +1,24 @@
+
+
+ public void search(int data)
+	  {
+	  	 boolean re=search(root ,data);
+	  	 System.out.print(re);
+	  }
+
+	  public boolean search(node root,int data)
+	  {
+	  	   if(root==null)
+	  	   	return false;
+            while(root!=null)
+         {
+	  	   if(root.data==data)
+	  	   	return true;
+	  	     if(root.data>data)
+	  	    return search(root.left,data);
+	  	   else if(root.data<data)
+	  	     return search(root.right,data);
+	  	 }
+
+            return false;
+	  }
