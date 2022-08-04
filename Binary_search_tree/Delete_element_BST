@@ -1,0 +1,43 @@
+
+
+public void delete(int data)
+   {
+   	    root =delete(root, ele);
+   	    inorder(root);
+
+   }
+
+    public node delete(node root , int ele)
+    {
+    	if(root==null)
+    		return root;
+
+    	if(root.data>ele)
+    		root.left =delete(root.left,ele);
+    	else if(root.data<ele)
+    		root.right=delete(root.right,ele);
+    	else
+    	{
+    		if(root.left==null)
+    			return root.right;
+    		else if(root.right==null)
+    			return root.left;
+
+
+    		root.data =minvalue(root.right);
+
+    		root.right =delete(root.right,root.data);
+
+    	}
+    	return root;
+    }
+    public int minvalue(node root)
+    {
+    	int min =root.data;
+    	while(root.left!=null)
+    	{
+    		min =root.left.data;
+    		root=root.left;
+    	}
+    	return min;
+    }
