@@ -1,0 +1,22 @@
+ 
+ 
+   class Solution {
+    public int pivotIndex(int[] nums) {
+        int sum=0,start=0;
+        
+       for(int ele :nums)
+       {
+           sum+=ele;
+       }
+        for(int i=0;i<nums.length;i++)
+        {
+            sum-=nums[i];
+            if(start==sum)
+                return i;
+            start+=nums[i];
+        }
+        return -1;
+        
+    }
+    
+}
