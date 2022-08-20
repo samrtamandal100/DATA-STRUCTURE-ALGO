@@ -1,0 +1,42 @@
+import java.util.*;
+
+
+public class imp_stack_using_queue
+{
+	static Queue<Integer> q1 = new LinkedList<>();
+	static Queue<Integer> q2 = new LinkedList<>();
+
+	public static void push(int data)
+	{
+		while(!q1.isEmpty())
+		{
+             q2.offer(q1.poll());
+		}
+		q1.offer(data);
+
+		while(!q2.isEmpty())
+		{
+          q1.offer(q2.poll());
+		}
+	}
+
+	public static int pop()
+	{
+		
+		return q1.poll();
+	}
+
+
+	public static void main(String args[])
+	{
+		push(20);
+		push(10);
+		push(40);
+		push(70);
+
+		System.out.print(pop());
+		System.out.print(pop());
+		System.out.print(pop());
+	}
+
+}
