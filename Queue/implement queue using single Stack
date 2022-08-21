@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class imp_queue_using_single_stack
+{
+	static Stack<Integer>  stack = new Stack<>();
+	public static void push(int data)
+	{
+		stack.push(data);
+	}
+
+	public static void pop()
+	{
+		if(stack.size()<1)
+		{
+			return;
+		}
+
+		if(stack.size()==1)
+		{
+			System.out.print(stack.pop());
+			return;
+		}
+
+		int data =stack.pop();
+		pop();
+		stack.push(data);
+
+	}
+	public static void main(String args[])
+	{
+			push(10);
+			push(20);
+			push(40);
+			pop();
+			pop();
+			pop();
+			
+	}
+}
